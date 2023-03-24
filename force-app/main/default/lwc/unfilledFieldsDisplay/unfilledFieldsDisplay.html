@@ -1,0 +1,30 @@
+<template>
+
+    <lightning-card class="slds-align_absolute-center slds-var-p-around_small">
+        <p class="slds-align_absolute-center slds-var-p-around_small">This component scans code to see how many times unfilled fields are referenced.</p>
+        <p class="slds-align_absolute-center slds-var-p-around_small">Currently only supports Apex classes and triggers, excluding subqueries and Database class queries.</p>
+        <lightning-button class="slds-align_absolute-center slds-var-p-around_small" label={buttonLabel} onclick={handleStartScanButton} variant="brand" style="font-family:'Times New Roman'; font-size:15px"></lightning-button>
+    </lightning-card>
+
+    <lightning-layout multiple-rows="true">
+        <template for:each={getRecords} for:item="sObj">
+
+            <lightning-layout-item key={sObj.key} class="slds-var-p-around_x-small">
+                <lightning-card title={sObj.key} class="slds-align_absolute-center slds-var-p-around_small">
+
+                    <template for:each={sObj.value} for:item="record">
+                            
+                        <a class="slds-var-p-horizontal_small" data-id={record.key} data-sobj={sObj.key} onclick={linkToRecord} key={record.key}>Record ID: {record.key}</a>
+                        <template for:each={record.value} for:item="field">
+                            <p class="slds-var-p-horizontal_small" key={field.key}>&emsp;{field.value}</p>
+                        </template>
+
+                    </template>
+
+                </lightning-card>
+            </lightning-layout-item>
+
+        </template>
+    </lightning-layout>
+
+</template>
