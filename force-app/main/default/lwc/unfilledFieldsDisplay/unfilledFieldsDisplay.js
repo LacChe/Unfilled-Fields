@@ -19,7 +19,7 @@ export default class UnfilledFieldsDisplay extends NavigationMixin(LightningElem
             .then(result => {
                 this.fields = result.fields;
                 this.records = result.records;
-                this.buttonLabel = 'Scan';
+                this.buttonLabel = Object.keys(result.records).length === 0 ? 'None Found!' : 'Done!';
 
                 /*
                 console.log('_____fields_', this.fields);
@@ -43,10 +43,6 @@ export default class UnfilledFieldsDisplay extends NavigationMixin(LightningElem
                 this.buttonLabel = 'Scan';
                 console.log('error', error);
             });
-    }
-
-    get getFields(){
-        return this.fields == null ? this.fields : Object.entries(this.fields);
     }
 
     get getRecords(){
