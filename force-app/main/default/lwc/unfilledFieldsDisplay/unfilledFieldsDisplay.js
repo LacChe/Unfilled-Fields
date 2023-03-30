@@ -46,13 +46,13 @@ export default class UnfilledFieldsDisplay extends NavigationMixin(LightningElem
     }
 
     get getRecords(){
-        var sObjList = [];
-        var recordList = [];
-        var fieldList = [];
-        var checkAllProperties = true;
-        var sObjKey;
-        var recordKey;
-        var fieldKey;
+        let sObjList = [];
+        let recordList = [];
+        let fieldList = [];
+        let checkAllProperties = true;
+        let sObjKey;
+        let recordKey;
+        let fieldKey;
         for (sObjKey in this.records) {
 
             if(checkAllProperties){
